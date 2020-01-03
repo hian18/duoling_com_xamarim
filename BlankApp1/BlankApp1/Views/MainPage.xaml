@@ -6,8 +6,8 @@
              Title="{Binding Title}"
              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
     android:TabbedPage.ToolbarPlacement="Bottom"
-             BarBackgroundColor="#0D63D5"
-    BarTextColor="White"
+             BarBackgroundColor="#FFFFFF"
+    BarTextColor="#000000"
             
             >
     
