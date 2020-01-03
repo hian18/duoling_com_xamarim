@@ -7,6 +7,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.Design.Widget;
 using Android.Views;
 using Android.Widget;
 using BlankApp1.Droid.Renderers;
@@ -27,6 +28,14 @@ namespace BlankApp1.Droid.Renderers
         protected override void OnElementChanged(ElementChangedEventArgs<TabbedPage> e)
         {
             base.OnElementChanged(e);
+
+            if(e.NewElement != null)
+            {
+                var relative = base.GetChildAt(0) as Android.Widget.RelativeLayout;
+                var bottom= relative.GetChildAt(1) as BottomNavigationView;
+                bottom.SetMinimumHeight(300);
+            }
+
         }
     }
 }
