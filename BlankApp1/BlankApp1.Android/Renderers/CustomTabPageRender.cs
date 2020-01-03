@@ -16,7 +16,7 @@ using BlankApp1.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.Platform.Android.AppCompat;
-
+using BlankApp1.Interfaces;
 [assembly: ExportRenderer(typeof(TabbedPage), typeof(CustomTabPageRender))]
 namespace BlankApp1.Droid.Renderers
 {
@@ -56,35 +56,25 @@ namespace BlankApp1.Droid.Renderers
         private void ChangeIcons()
         {
             int c = 0;
+            int iconId=0;
             foreach (var item in _formTabs.Children)
             {
                 var androidTab = _bottom.Menu.GetItem(c);
-
-
-                switch (_formTabs.Children[c])
+                if (_formTabs.Children[c] is ISelectIcon tabpage)
                 {
-                    case LeasseonsView l:
-                        if (_formTabs.Children[c] == _formTabs.CurrentPage)
-                            androidTab.SetIcon(Resource.Drawable.tab_lessons_selected);
-                        else
-                            androidTab.SetIcon(Resource.Drawable.tab_lessons);
-                        break;
-                    case TrainingView t:
+                    if (_formTabs.Children[c] == _formTabs.CurrentPage)
+                    {
+                        iconId = Resources.GetIdentifier(tabpage.GetSelectedIcon(), "drawable",Context.PackageName);
+                        androidTab.SetIcon(iconId);
+                    }
+                    else
+                    {
+                        iconId = Resources.GetIdentifier(tabpage.GetIcon(), "drawable", Context.PackageName);
+                        androidTab.SetIcon(iconId);
+                    }
 
-
-                        break;
-                    case ProfileView p:
-                        if (_formTabs.Children[c] == _formTabs.CurrentPage)
-                            androidTab.SetIcon(Resource.Drawable.tab_profile_selected);
-                        else
-                            androidTab.SetIcon(Resource.Drawable.tab_profile);
-                        break;
-                    default:
-
-                        break;
                 }
                 c++;
-
             }
         }
 

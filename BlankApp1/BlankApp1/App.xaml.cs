@@ -18,7 +18,12 @@ namespace BlankApp1
          */
         public App() : base(null) { }
 
-        public App(IPlatformInitializer initializer) : base(initializer) { }
+        public App(IPlatformInitializer initializer) : base(initializer) {
+//#if DEBUG
+//            Xamarin.Forms.HotReloader.Current.Run(this);
+//#endif
+
+        }
 
         protected override async void OnInitialized()
         {

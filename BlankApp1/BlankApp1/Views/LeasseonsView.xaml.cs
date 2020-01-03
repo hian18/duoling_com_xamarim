@@ -12,7 +12,7 @@ using Xamarin.Forms.Xaml;
 namespace BlankApp1.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LeasseonsView : ContentPage, IDanamicTitle
+    public partial class LeasseonsView : ContentPage, IDanamicTitle, ISelectIcon
     {
         public LeasseonsView()
         {
@@ -28,5 +28,21 @@ namespace BlankApp1.Views
             }
             return title_;
         }
+
+        public string GetIcon()
+        {
+            return "tab_lessons";
+        }
+
+        public string GetSelectedIcon()
+        {
+            return "tab_lessons_selected";
+        }
+
+        //public string GetIcon => "tab_lessons";
+
+
+        //public string GetSelectedIcon => "tab_lessons_selected";
+
     }
 }
